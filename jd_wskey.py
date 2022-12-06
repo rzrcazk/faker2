@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 '''
 定时自定义
-1 1 1 1 1 jd_wskey.py
+*/30 * * * * jd_wskey.py
 new Env('wskey转换');
 '''
 import socket  # 用于端口检测
