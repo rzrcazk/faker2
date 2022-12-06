@@ -4,7 +4,7 @@
 https://raw.githubusercontent.com/6dylan6/jdpro/main/jd_makemoneyshop.js
 
 
-7 7 7 7 7 jd_makemoneyshop_auto_old.js
+0 0 * * * jd_makemoneyshop_auto_old.js
 
 默认只助力 ck1
  */
