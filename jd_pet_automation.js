@@ -1,4 +1,4 @@
-//20 14 10 4 *  jd_pet_automation.js
+//20 5,15,21 * * *  jd_pet_automation.js
 
 const {Env} = require('./function/magic');
 const $ = new Env('M萌宠自动化');
