@@ -235,7 +235,7 @@ def main():
         if result:
             print("✅依赖安装/更新完成")
     except Exception as  e:
-        print("remote_redis :"+e)
+        print(e)
         print("‼️依赖安装/更新失败,请前往Faker TG群查看安装教程")
 
 if __name__ == '__main__':
