@@ -229,9 +229,9 @@ def main():
     updateDependent()
     try:
         from jd_sign import remote_redis
+        print (remote_redis)
         result = remote_redis(export_name="Test01", db_index=15)
         print(f'🎉{result}\n')
-        print (remote_redis)
         if result:
             print("✅依赖安装/更新完成")
     except Exception as  e:
