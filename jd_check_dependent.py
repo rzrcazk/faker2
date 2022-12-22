@@ -7,7 +7,7 @@ Author: HarbourJ
 Date: 2022/8/12 20:37
 TG: https://t.me/HarbourToulu
 TgChat: https://t.me/HarbourSailing
-cron: 20 0 */8 * * *
+cron: 20 0 */2 * * *
 new Env('Faker库依赖一键安装');
 Description:1.Faker库jd_sign本地算法依赖一键检测安装脚本;
             2.自动识别机器系统/架构,拉取最新依赖文件;
@@ -129,7 +129,7 @@ def check_ld_libc(version):
                 print("❌arm64-libc依赖安装失败,请前往Faker TG群查看安装教程\n")
 
 def download(version, systemFile):
-    raw_url = f"https://ghproxy.com/https://github.com/HarbourJ/HarbourToulu/releases/download/{version}/{systemFile}"
+    raw_url = f"https://github.com/HarbourJ/HarbourToulu/releases/download/{version}/{systemFile}"
     try:
         fileList = os.listdir()
         if systemFile in fileList:
@@ -177,7 +177,7 @@ def signReleaseUpdate():
     """
     判断Release内的主要文件是否更新(判断utils内版本更新log文件-signUpdateLog.log)
     """
-    GitAPI = "https://ghproxy.com/https://raw.githubusercontent.com/HarbourJ/HarbourToulu/main/utils/signUpdateLog.log"
+    GitAPI = "https://raw.githubusercontent.com/HarbourJ/HarbourToulu/main/utils/signUpdateLog.log"
     # try:
     headers = {
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -231,9 +231,11 @@ def main():
         from jd_sign import remote_redis
         result = remote_redis(export_name="Test01", db_index=15)
         print(f'🎉{result}\n')
+        print (remote_redis)
         if result:
             print("✅依赖安装/更新完成")
-    except:
+    except Exception as  e:
+        print("remote_redis :"+e)
         print("‼️依赖安装/更新失败,请前往Faker TG群查看安装教程")
 
 if __name__ == '__main__':
