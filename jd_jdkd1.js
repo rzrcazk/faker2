@@ -2,9 +2,9 @@
 京东快递
 @Leaf
 
-13 22 * * * jd_jdkd.js
+13 22 * * * jd_jdkd1.js
 */
-const $ = Env('京东快递');
+const $ = new Env('京东快递');
 const got = require('got');
 
 const envSplitor = ['&','\n','@']
