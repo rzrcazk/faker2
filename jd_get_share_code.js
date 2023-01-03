@@ -21,9 +21,6 @@ cron "20 13 * * 6" script-path=jd_get_share_code.js, tag=获取互助码
 获取互助码 = type=cron,script-path=jd_get_share_code.js, cronexpr="20 13 * * 6", timeout=3600, enable=true
  */
 
-//js脚本开头加入这段代码
-require("global-agent/bootstrap");
-global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 
 const $ = new Env("获取互助码");
 const JD_API_HOST = "https://api.m.jd.com/client.action";
