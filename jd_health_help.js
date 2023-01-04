@@ -19,6 +19,8 @@ cron "5 4,14 * * *" script-path=https://raw.githubusercontent.com/shufflewzc/fak
 ============小火箭=========
 东东健康社区 = type=cron,script-path=https://raw.githubusercontent.com/shufflewzc/faker2/main/jd_health_help.js, cronexpr="5 4,14 * * *", timeout=3600, enable=true
  */
+require("global-agent/bootstrap");
+global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env("东东健康社区内部互助");
 const jdCookieNode = $.isNode() ? require("./jdCookie.js") : "";
 const notify = $.isNode() ? require('./sendNotify') : "";
