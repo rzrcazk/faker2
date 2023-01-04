@@ -5,7 +5,8 @@ export DPLHTY_DRAWNUM="3"                      抽奖次数不写则默认为3, 
 export DPLHTY_YOURCODE="你自己的邀请码"           如果设置了全部助力你设置的指定邀请码,不推荐填写
 cron "2 2 29 2 *" jd_opencardLH.js
 */
-
+require("global-agent/bootstrap");
+global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('通用大牌联合开卡');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
