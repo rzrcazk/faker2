@@ -5,6 +5,9 @@ https://lzkjdz-isv.isvjcloud.com/wxTeam/activity?activityId=xxx
 export jd_zdjr_activityId="xxx"     活动ID 必需
 cron "1 1 1 1 1" jd_zdjr.js
 */
+
+require("global-agent/bootstrap");
+global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('LZ组队瓜分')
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
