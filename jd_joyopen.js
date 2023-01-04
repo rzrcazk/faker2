@@ -13,6 +13,7 @@ cron:2 1 * * *
 2 1 * * * jd_joyopen.js, tag=JOY通用开卡活动, enabled=true
 
 */
+
 require("global-agent/bootstrap");
 global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('joyjd通用开卡');
