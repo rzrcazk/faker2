@@ -7,6 +7,8 @@ export dpqd_token="token1&token2&token3..."
 店铺签到的定时可采取随机定时,每天运行一次即可
 cron "1 1 1 1 1" script-path=jd_dpqd.js,tag=店铺签到
 */
+require("global-agent/bootstrap");
+global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('店铺签到');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
