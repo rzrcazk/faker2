@@ -14,9 +14,9 @@ new Env('手机折上折抽奖');
 
 import time, requests, sys, re, os, json, random
 import warnings
-
 proxies = {"http":"http://172.18.1.13:8080","https":"http://172.18.1.13:8080"}
 requests.get(url,proxies=proxies)
+
 
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
