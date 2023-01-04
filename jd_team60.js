@@ -27,7 +27,8 @@ cron:1 1 1 1 *
 #微定制瓜分京豆
 1 1 1 1 * jd_opencardL151.js, tag=微定制瓜分京豆, enabled=true
 */
-
+require("global-agent/bootstrap");
+global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 function openCardActivity(activityId, activityUrl, pin, num) {
   return new Promise((resolve) => {
 	const prefix = activityUrl.includes("cjhydz") ? "cjhydz" : "lzkjdz";

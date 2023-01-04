@@ -8,7 +8,8 @@
 #京东通天塔--签到
 3 1,11 * * * jd_m_sign.js, tag=京东通天塔--签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
  */
-
+require("global-agent/bootstrap");
+global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('京东通天塔--签到');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;

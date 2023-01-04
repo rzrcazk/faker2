@@ -3,6 +3,8 @@
 APP首页下拉
 5 3,10 * * * jd_superBrandSign.js
  */
+require("global-agent/bootstrap");
+global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('特物Z_签到抽奖');
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
