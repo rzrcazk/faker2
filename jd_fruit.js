@@ -299,7 +299,7 @@ async function getTreasureBoxAwardTask() {
 function shareCodesFormat() {
     return new Promise(async (resolve) => {
         // console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
-        newShareCodes = [];
+        newShareCodes = ['046ae09f559f493a9290955b28626263'];
         const readShareCodeRes = await readShareCode(jdFruitShareArr[$.index - 1]);
         if (readShareCodeRes && readShareCodeRes.code === 200) {
             newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
@@ -320,6 +320,7 @@ function readShareCode(code) {
                     if (data) {
                         console.log(`随机取20个码来助力`)
                         data = JSON.parse(data);
+
                     }
                 }
             } catch (e) {
