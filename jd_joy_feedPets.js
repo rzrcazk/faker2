@@ -3,8 +3,8 @@
 更新时间：2022-10-14
 活动入口：京东APP我的-更多工具-宠汪汪
 */
-//require("global-agent/bootstrap");
-//global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
+require("global-agent/bootstrap");
+global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('宠汪汪喂食');
 const Slider = require('./JDJRValidator_Pure');
 //$.get = Slider.injectToRequest2($.get.bind($));
