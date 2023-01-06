@@ -23,8 +23,8 @@ cron:1 1 1 1 *
 
 */
 
-require("global-agent/bootstrap");
-global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
+//require("global-agent/bootstrap");
+//global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 
 const $ = new Env('集卡抽奖通用活动');
 

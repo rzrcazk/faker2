@@ -3,8 +3,8 @@
 https://t.me/proenvc
 日签到概率中14豆, 签满5天可集勋章抽奖 概率中几十豆,中大的得看运气
  */
-require("global-agent/bootstrap");
-global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
+//require("global-agent/bootstrap");
+//global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('京东金榜');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
