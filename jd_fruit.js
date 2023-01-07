@@ -41,7 +41,7 @@ let shareCodes = [ // 这个列表填入你要助力的好友的shareCode
     //     //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
     //     '5853550f71014282912b76d95beb84c0@b58ddba3317b44ceb0ac86ea8952998c@8d724eb95e3847b6a1526587d1836f27@a80b7d1db41a4381b742232da9d22443@ce107b8f64d24f62a92292180f764018@c73ea563a77d4464b273503d3838fec1@0dd9a7fd1feb449fb1bf854a3ec0e801',
 ]
-$.newShareCode = ['046ae09f559f493a9290955b28626263'];
+$.newShareCode = ["046ae09f559f493a9290955b28626263","a0a6a50a3070405baa9a334d78387aa9","5c38b60a15da44ef9a779955ce01ddaa","747eadfc08e64f4f8b791b79aa2d099f","f89de1e9b71c43caa13604b888684b6a","a241e6ed967e445697337bd54f0bcd0d","ac133f61ae174b199fc3fee1dbaf3b1d","78a9f4ce900247379088f0e07726e3f4"];
 let codeType = 0;
 const ZLC = true
 const JD_ZLC_URL = process.env.JD_ZLC_URL ? process.env.JD_ZLC_URL : "https://zlc1.chaoyi996.com";
@@ -319,7 +319,7 @@ function readShareCode(code) {
                 } else {
                     if (data) {
                         console.log(`随机取20个码来助力`)
-                        data = JSON.parse(data);
+                       // data = JSON.parse(data);
 
                     }
                 }
