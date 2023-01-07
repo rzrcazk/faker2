@@ -41,7 +41,7 @@ let shareCodes = [ // 这个列表填入你要助力的好友的shareCode
     //     //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
     //     '5853550f71014282912b76d95beb84c0@b58ddba3317b44ceb0ac86ea8952998c@8d724eb95e3847b6a1526587d1836f27@a80b7d1db41a4381b742232da9d22443@ce107b8f64d24f62a92292180f764018@c73ea563a77d4464b273503d3838fec1@0dd9a7fd1feb449fb1bf854a3ec0e801',
 ]
-$.newShareCode = ["046ae09f559f493a9290955b28626263","a0a6a50a3070405baa9a334d78387aa9","5c38b60a15da44ef9a779955ce01ddaa","747eadfc08e64f4f8b791b79aa2d099f","f89de1e9b71c43caa13604b888684b6a","a241e6ed967e445697337bd54f0bcd0d","ac133f61ae174b199fc3fee1dbaf3b1d","78a9f4ce900247379088f0e07726e3f4"];
+$.newShareCode = ["046ae09f559f493a9290955b28626263","a0a6a50a3070405baa9a334d78387aa9","8f7210178425493ca7e6e36878329c16","5c38b60a15da44ef9a779955ce01ddaa","747eadfc08e64f4f8b791b79aa2d099f","f89de1e9b71c43caa13604b888684b6a","a241e6ed967e445697337bd54f0bcd0d","e82a1d183168408895e19dc2a270f127","926d91435ec546409157bfecc7fa5529","50194d7c0b324bfab948e983a977383e","f2e6ef54f22d4ee693b396e44dfdd134","ac133f61ae174b199fc3fee1dbaf3b1d","78a9f4ce900247379088f0e07726e3f4","72a3a25532c34d4c940522bc2ff844c4","9d1855d423fd4dd0bd80103b3ccdf4e2","5143fc88d6c64553965004c6b033bc82","d642aebd3f7b4f65bd2b43ad21a5f99e","c4b20c1431e44b098eb0ff9e2234d2f6","11acda1e76b64132b80dcba08ec01931","0064bd012ff4442fa21558da639848d3","b863727d1f4f412d8b5f190a677348f7","34d03f1102fd410aa7efc47dbf235a4b"];
 let codeType = 0;
 const ZLC = true
 const JD_ZLC_URL = process.env.JD_ZLC_URL ? process.env.JD_ZLC_URL : "https://zlc1.chaoyi996.com";
@@ -320,6 +320,7 @@ function readShareCode(code) {
                     if (data) {
                         console.log(`随机取20个码来助力`)
                        // data = JSON.parse(data);
+                        data=[];
 
                     }
                 }
