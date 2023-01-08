@@ -766,7 +766,7 @@ function readShareCode(code) {
           if (data) {
             console.log(`随机取${randomCount}个码放到您固定的互助码后面`)
             //data = JSON.parse(data);
-            data=[];
+            data=["ptnabclszqdnjbkdsx3leihwwm3h7wlwy7o5jii","llc63bkmpx4422c5jjpvkjdm24","e7lhibzb3zek2pxmwxzhiznq6w7qxxbsr5yxvwy","mlrdw3aw26j3xy2m4pqn63gseckaf5zazqnhtya","f5pavyxxlph5o7xwpj3zdbrye4chknfs2bih5ey","wsr6thb5bd25lrux7oaknbxmdk6gvrxsfu4c5si","xmblfgd3rmwo4iyjhy6j733hbcagwxbyg6embxi","4larfd6ua4ecy4epg23rl6qvlvgynaxi7ofqfly","wcp2cazeapax2cqdj24ykpfc4gzhl3r6wzrwvjq","mlrdw3aw26j3x6hanylahrykmafhjevshknawaq","e7lhibzb3zek3k2yppjkwvya7jejekcmzg2u4ui","olmijoxgmjutz22edvkgsew32aoray2bljtx5ai","ftlgkcvihcmhxdxm4a2hkmjtlogbi6jnmg45joswszj26s7z4jdq","olmijoxgmjutz4tngiliix3u6xpitgoidkzxz5i","mlrdw3aw26j3wjr5hztnmyfucynr24oioyorz3y","mlrdw3aw26j3xilncmpkqwrfkqhyrgktolxfpia","u72q4vdn3zes2c52kjjwpvnaoyqieev4andeusi","e7lhibzb3zek2q256d6ew2ozquvhdkqneprhgpa","elrvdn2ob44tgbnehphyxvugvdmkshmngtewp5q","olmijoxgmjutyk6gr34ssp4c6licr6b573otiny","olmijoxgmjutycarwsxfimclx3fck3ckg27mzla","mlrdw3aw26j3xezsu3sr335qmx66h3yyq3kcwfi"];
           }
         }
       } catch (e) {
