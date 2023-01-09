@@ -6,8 +6,8 @@ https://raw.githubusercontent.com/aTenb/jdOpenSharePicker/master/jd_beautyStudy.
 活动入口：京东app首页-美妆馆-底部中间按钮
 定时自定义，集中访问可能炸
  */
-require("global-agent/bootstrap");
-global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
+// require("global-agent/bootstrap");
+// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('美丽研究院');
 const notify = $.isNode() ? require('./sendNotify') : '';
 console.log('连接服务器不稳定,能不能用随缘!!!')

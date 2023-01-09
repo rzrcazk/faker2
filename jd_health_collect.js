@@ -22,8 +22,8 @@ cron "5-45/20 * * * *" script-path=jd_health_collect.js, tag=东东健康社区�
 东东健康社区收集能量 = type=cron,script-path=jd_health_collect.js, cronexpr="5-45/20 * * * *", timeout=3600, enable=true
  */
 
-require("global-agent/bootstrap");
-global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
+// require("global-agent/bootstrap");
+// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env("东东健康社区收集能量收集");
 const jdCookieNode = $.isNode() ? require("./jdCookie.js") : "";
 let cookiesArr = [],

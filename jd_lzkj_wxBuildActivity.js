@@ -9,8 +9,8 @@ export jd_lzkj_wxBuildActivity_openCard="1"      设置为1则自动入会   不
 
 cron "1 1 1 1 1" jd_lzkj_wxBuildActivity.js
 */
-require("global-agent/bootstrap");
-global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
+// require("global-agent/bootstrap");
+// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('lzkj盖楼有礼')
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
