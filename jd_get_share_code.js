@@ -606,7 +606,6 @@ async function getShareCode() {
   } catch (e) {
     console.log(e)
   }
-    
   console.log(`======账号${$.index}结束======\n`)
 }
 
