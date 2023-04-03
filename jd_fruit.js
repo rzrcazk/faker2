@@ -24,6 +24,7 @@ cron "5 6-18/6 * * *" script-path=jd_fruit_task.js,tag=东东农场日常任务
 export DO_TEN_WATER_AGAIN="" 默认再次浇水
 
 */
+
 require("global-agent/bootstrap");
 global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('东东农场助力池版');
@@ -299,7 +300,7 @@ async function getTreasureBoxAwardTask() {
 function shareCodesFormat() {
     return new Promise(async (resolve) => {
         console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
-        newShareCodes = ["046ae09f559f493a9290955b28626263","a0a6a50a3070405baa9a334d78387aa9","3e431757f8de404a89ebd6a35ff2ffe1","8f7210178425493ca7e6e36878329c16","5c38b60a15da44ef9a779955ce01ddaa","747eadfc08e64f4f8b791b79aa2d099f","f89de1e9b71c43caa13604b888684b6a","a241e6ed967e445697337bd54f0bcd0d","e82a1d183168408895e19dc2a270f127","926d91435ec546409157bfecc7fa5529","50194d7c0b324bfab948e983a977383e","f2e6ef54f22d4ee693b396e44dfdd134","ac133f61ae174b199fc3fee1dbaf3b1d","78a9f4ce900247379088f0e07726e3f4","72a3a25532c34d4c940522bc2ff844c4","9d1855d423fd4dd0bd80103b3ccdf4e2","5143fc88d6c64553965004c6b033bc82","d642aebd3f7b4f65bd2b43ad21a5f99e","c4b20c1431e44b098eb0ff9e2234d2f6","11acda1e76b64132b80dcba08ec01931","0064bd012ff4442fa21558da639848d3","b863727d1f4f412d8b5f190a677348f7","34d03f1102fd410aa7efc47dbf235a4b"];
+        newShareCodes = [];
         const readShareCodeRes = await readShareCode(jdFruitShareArr[$.index - 1]);
         if (readShareCodeRes && readShareCodeRes.code === 200) {
             newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
@@ -319,9 +320,7 @@ function readShareCode(code) {
                 } else {
                     if (data) {
                         console.log(`随机取20个码来助力`)
-                       // data = JSON.parse(data);
-                        data=[];
-
+                        data = JSON.parse(data);
                     }
                 }
             } catch (e) {
