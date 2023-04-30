@@ -130,7 +130,7 @@ def check_ld_libc(version):
                 print("❌arm64-libc依赖安装失败,请前往Faker TG群查看安装教程\n")
 
 def download(version, systemFile):
-    raw_url = f"https://proxy.zyun.vip/https://github.com/HarbourJ/HarbourToulu/releases/download/{version}/{systemFile}"
+    raw_url = f"https://github.com/HarbourJ/HarbourToulu/releases/download/{version}/{systemFile}"
     try:
         fileList = os.listdir()
         if systemFile in fileList:
