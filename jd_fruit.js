@@ -25,8 +25,8 @@ export DO_TEN_WATER_AGAIN="" 默认再次浇水
 
 */
 
-// require("global-agent/bootstrap");
-// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
+require("global-agent/bootstrap");
+global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('东东农场助力池版');
 let cookiesArr = [],
     cookie = '',
