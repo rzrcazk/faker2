@@ -1,6 +1,6 @@
 /**
 自动评价
-cron 21 12 * * * jd_comment.js
+cron 21 7,13,21 * * * jd_comment.js
 */
 const $ = new Env('自动评价');
 const notify = $.isNode() ? require('./sendNotify') : '';

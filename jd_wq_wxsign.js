@@ -7,6 +7,8 @@ by:小手冰凉 tg:@chianPLA
 新手写脚本，难免有bug，能用且用。
 ===========================
 */
+// require("global-agent/bootstrap");
+// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env("微信签到领红包");
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';

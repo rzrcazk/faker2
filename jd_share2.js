@@ -5,7 +5,8 @@ export jd_fxyl_activityId="xxx" 活动id
 export OWN_COOKIE_NUM="4" 需要助力数量  非必须
 cron "1 1 1 1 1" jd_share.js
 */
-
+// require("global-agent/bootstrap");
+// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env("lz分享有礼");
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';

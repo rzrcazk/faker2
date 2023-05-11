@@ -729,7 +729,7 @@ async function showMsg() {
 			if (TempBeanCache){
 				ReturnMessage += `【京豆变动】${$.beanCount-$.beanCache}豆(与${matchtitle}${$.CheckTime}比较)`;			
 				strsummary += `变动${$.beanCount-$.beanCache}豆,`;
-				ReturnMessage += `\n`;				
+				ReturnMessage += `\n`;
 			}	
 			else{
 				ReturnMessage += `【京豆变动】未找到缓存,下次出结果统计`;
@@ -904,10 +904,10 @@ async function showMsg() {
 		}else{
 			ReturnMessage=`【账号名称】${$.nickName || $.UserName}\n`+ReturnMessage;
 		}
-		if (TempBaipiao) {			
+		if (TempBaipiao) {
 			TempBaipiao = `【⏰商品白嫖活动提醒⏰】\n` + TempBaipiao;
 			ReturnMessage = TempBaipiao + `\n` + ReturnMessage;			
-		} 
+		}
 		
 		ReturnMessage += RemainMessage;
 		
@@ -1344,7 +1344,7 @@ function redPacket() {
 			}
 		}
 		$.get(options, (err, resp, data) => {
-			try {				
+			try {
 				if (err) {
 					console.log(`${JSON.stringify(err)}`)
 					console.log(`redPacket API请求失败，请检查网路重试`)
@@ -1368,9 +1368,9 @@ function redPacket() {
 						t.setDate(t.getDate() + 1);
 						t.setHours(0, 0, 0, 0);
 						t = parseInt((t - 1) / 1000)*1000;
-						
+
 						for (let vo of data.hongBaoList || []) {
-						    if (vo.orgLimitStr) {								
+						    if (vo.orgLimitStr) {
 						        if (vo.orgLimitStr.includes("京喜") && !vo.orgLimitStr.includes("特价")) {
 						            $.jxRed += parseFloat(vo.balance)
 						            if (vo['endTime'] === t) {
@@ -1408,14 +1408,14 @@ function redPacket() {
 						        $.jdGeneralRedExpire += parseFloat(vo.balance)
 						    }
 						}
-						
+
 						$.balance = ($.jxRed+$.jsRed+$.jdRed +$.jdhRed+$.jdwxRed+$.jdGeneralRed).toFixed(2);
 						$.jxRed = $.jxRed.toFixed(2);
 						$.jsRed = $.jsRed.toFixed(2);
 						$.jdRed = $.jdRed.toFixed(2);						
 						$.jdhRed = $.jdhRed.toFixed(2);
 						$.jdwxRed = $.jdwxRed.toFixed(2);
-						$.jdGeneralRed = $.jdGeneralRed.toFixed(2);						
+						$.jdGeneralRed = $.jdGeneralRed.toFixed(2);
 						$.expiredBalance = ($.jxRedExpire + $.jsRedExpire + $.jdRedExpire+$.jdhRedExpire+$.jdwxRedExpire+$.jdGeneralRedExpire).toFixed(2);
 						$.message += `【红包总额】${$.balance}(总过期${$.expiredBalance})元 \n`;
 						if ($.jxRed > 0){
@@ -1424,43 +1424,43 @@ function redPacket() {
 							else
 								$.message += `【京喜红包】${$.jxRed}元 \n`;
 						}
-							
+
 						if ($.jsRed > 0){
 							if($.jsRedExpire>0)
 								$.message += `【京喜特价】${$.jsRed}(将过期${$.jsRedExpire.toFixed(2)})元(原极速版) \n`;
 							else
 								$.message += `【京喜特价】${$.jsRed}元(原极速版) \n`;
 						}
-							
+
 						if ($.jdRed > 0){
 							if($.jdRedExpire>0)
 								$.message += `【京东红包】${$.jdRed}(将过期${$.jdRedExpire.toFixed(2)})元 \n`;
 							else
 								$.message += `【京东红包】${$.jdRed}元 \n`;
 						}
-							
+
 						if ($.jdhRed > 0){
 							if($.jdhRedExpire>0)
 								$.message += `【健康红包】${$.jdhRed}(将过期${$.jdhRedExpire.toFixed(2)})元 \n`;
 							else
 								$.message += `【健康红包】${$.jdhRed}元 \n`;
 						}
-							
+
 						if ($.jdwxRed > 0){
 							if($.jdwxRedExpire>0)
 								$.message += `【微信小程序】${$.jdwxRed}(将过期${$.jdwxRedExpire.toFixed(2)})元 \n`;
 							else
 								$.message += `【微信小程序】${$.jdwxRed}元 \n`;
 						}
-							
+
 						if ($.jdGeneralRed > 0){
 							if($.jdGeneralRedExpire>0)
 								$.message += `【全平台通用】${$.jdGeneralRed}(将过期${$.jdGeneralRedExpire.toFixed(2)})元 \n`;
 							else
 								$.message += `【全平台通用】${$.jdGeneralRed}元 \n`;
-							
+
 						}
-							
+
 					} else {
 						console.log(`京东服务器返回空数据`)
 					}

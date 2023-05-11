@@ -3,6 +3,8 @@
 活动入口：京东-京东众筹-众筹许愿池
 15 12,19 * * * jd_wish.js
  */
+// require("global-agent/bootstrap");
+// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('众筹许愿池');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;

@@ -5,6 +5,8 @@
 活动入口：京东app首页-美妆馆-底部中间按钮
 cron "22 22 29 2 *" jd_beauty.js
  */
+// require("global-agent/bootstrap");
+// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('美丽研究院');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';

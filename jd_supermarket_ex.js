@@ -3,6 +3,8 @@
 只给第一个号兑换
 cron "1 1 1 1 1" jd_supermarket_ex.js
  */
+// require("global-agent/bootstrap");
+// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 const $ = new Env('京东超市-星币兑换');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';

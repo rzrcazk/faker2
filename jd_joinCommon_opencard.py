@@ -20,6 +20,8 @@ import time, requests, sys, re, os, json, random
 from datetime import datetime
 from urllib.parse import quote_plus, unquote_plus
 from functools import partial
+# proxies = {"http":"http://172.18.1.13:8080","https":"http://172.18.1.13:8080"}
+# requests.get(url,proxies=proxies)
 print = partial(print, flush=True)
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)

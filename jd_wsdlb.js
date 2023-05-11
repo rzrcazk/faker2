@@ -9,7 +9,8 @@ export dlbtz="false" //通知关闭
 
 5 0-23/6 * * * jd_wsdlb.js, tag=极速版我是大老板农场, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 */
-
+// require("global-agent/bootstrap");
+// global.GLOBAL_AGENT.HTTP_PROXY="http://172.18.1.13:8080";
 
 const $ = new Env('极速版我是大老板农场');
 const notify = $.isNode() ? require('./sendNotify') : '';

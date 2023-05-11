@@ -7,7 +7,7 @@ Author: HarbourJ
 Date: 2022/8/12 20:37
 TG: https://t.me/HarbourToulu
 TgChat: https://t.me/HarbourSailing
-cron: 7 7 7 7 7
+cron: 20 0 */2 * * *
 new Env('Faker库依赖一键安装');
 Description:1.Faker库jd_sign本地算法依赖一键检测安装脚本;
             2.自动识别机器系统/架构,拉取最新依赖文件;
@@ -130,7 +130,7 @@ def check_ld_libc(version):
                 print("❌arm64-libc依赖安装失败,请前往Faker TG群查看安装教程\n")
 
 def download(version, systemFile):
-    raw_url = f"https://proxy.zyun.vip/https://github.com/HarbourJ/HarbourToulu/releases/download/{version}/{systemFile}"
+    raw_url = f"https://github.com/HarbourJ/HarbourToulu/releases/download/{version}/{systemFile}"
     try:
         fileList = os.listdir()
         if systemFile in fileList:
@@ -148,7 +148,7 @@ def download(version, systemFile):
         # wget.download(raw_url,user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36")
         print("------开始下载%s------\n" % systemFile)
         print(raw_url)
-        file_name = raw_url.split('/')[-1] 
+        file_name = raw_url.split('/')[-1]
         opener = urllib.request.build_opener()
         opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0')]
         urllib.request.install_opener(opener)

@@ -52,7 +52,7 @@ def load_send():
 load_send()
 
 def get_remarkinfo():
-    url='http://127.0.0.1:5600/api/envs'
+    url='http://172.18.1.4:5700/api/envs'
     try:
         with open(re.sub('scripts.*','config',os.getcwd())+'/auth.json', 'r') as f:
             token=json.loads(f.read())['token']
