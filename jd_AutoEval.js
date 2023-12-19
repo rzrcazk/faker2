@@ -1,5 +1,5 @@
 /**
-带图评价发
+带图评价
 3 12 3 12 * jd_AutoEval.js
 */
 const $ = new Env('带图评价晒单');
