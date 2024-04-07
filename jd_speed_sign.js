@@ -1,5 +1,5 @@
 /*
-cron "0 6,13,19 * * *" jd_speed_sign_Mod.js, tag:京东特价版任务
+cron "5 3,15 * * *" jd_speed_sign.js, tag:京东特价版任务
 */
 //详细说明参考 https://github.com/ccwav/QLScript2.
 
@@ -43,14 +43,14 @@ if (new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate() == date.getDa
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       var cookie = cookiesArr[i];
-	  var url_uuid = randomString(16);
+	    var url_uuid = randomString(16);
 
       message = '';
       TaskList.push(jdGlobal(cookie,url_uuid));
       if (i == (cookiesArr.length - 1) || TaskList.length == maxThread) {
         await Promise.all(TaskList);
 		if (!llAPIError){
-			if (i != (cookiesArr.length - 1)){
+			if (TaskList.length == maxThread){
 				console.log(`当前批量完成，等待30秒`);
 				await $.wait(30 * 1000);
 			}			
@@ -84,9 +84,9 @@ async function jdGlobal(cookie,url_uuid) {
 	if (!isLogin)
 		return;
 	
-    await wheelsHome(cookie)
+    //await wheelsHome(cookie)
     await apTaskList(cookie)
-    await wheelsHome(cookie)
+    //await wheelsHome(cookie)
     await taskList(cookie,url_uuid)
     if (llAPIError) {      
       return;
@@ -96,7 +96,7 @@ async function jdGlobal(cookie,url_uuid) {
       return;
     }
     if (runorderReward) {
-      await orderReward(cookie)
+      //await orderReward(cookie)
     }
   } catch (e) {
     $.logErr(e)
@@ -595,7 +595,7 @@ function apDoTask(taskType, taskId, channel, itemId, cookie) {
   })
 }
 
-function taskUrl(functionId, cookie,url_uuid, body = {}) {	
+function taskUrl(functionId, cookie,url_uuid, body = {}) {
 	const struuid = url_uuid;
 	let nowTime = Date.now();
 	let _0x7683x5 = `${"lite-android&"}${JSON["stringify"](body)}${"&android&3.1.0&"}${functionId}&${nowTime}&${struuid}`;
