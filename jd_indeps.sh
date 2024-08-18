@@ -34,7 +34,7 @@ pnpm install -g moment
 pnpm install -g cheerio
 pnpm install -g dotenv
 pnpm install -g got@11.8.6
-pnpm install -g sharp
+pnpm install -g sharp@0.32.6
 pnpm install -g tough-cookie
 pnpm install -g https-proxy-agent@7.0.2
 pnpm install -g http-cookie-agent
