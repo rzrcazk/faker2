@@ -1,18 +1,19 @@
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Modify : 2022/9/30
+# Modify : 2024/4/21
 # 京豆近7天输出表格统计
 # 用不着每天跑,定时自行设置吧，配合desi可指定账号
 # https://raw.githubusercontent.com/6dylan6/jdpro/main/jd_beans_7days.py
 '''
 new Env('豆子7天统计');
-8 8 30 9 * jd_beans_7days.py
+8 8 29 2 * jd_beans_7days.py
 '''
 
 import requests
 import datetime
+import random
 import os,re,sys,json,time
-from urllib.parse import unquote
+from urllib.parse import unquote,quote
 from datetime import timedelta
 from datetime import timezone
 
@@ -31,7 +32,23 @@ session = requests.session()
 session.keep_alive = False
 
 url = "https://api.m.jd.com/api"
-
+def getua():
+    global uuid,addressid,iosVer,iosV,clientVersion,iPhone,area,ADID,lng,lat
+    uuid=''.join(random.sample(['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9','a','b','c','z'], 40))
+    addressid = ''.join(random.sample('1234567898647', 10))
+    iosVer = ''.join(random.sample(["15.1.1","14.5.1", "14.4", "14.3", "14.2", "14.1", "14.0.1"], 1))
+    iosV = iosVer.replace('.', '_')
+    clientVersion=''.join(random.sample(["10.3.0", "10.2.7", "10.2.4"], 1))
+    iPhone = ''.join(random.sample(["8", "9", "10", "11", "12", "13"], 1))
+    area=''.join(random.sample('0123456789', 2)) + '_' + ''.join(random.sample('0123456789', 4)) + '_' + ''.join(random.sample('0123456789', 5)) + '_' + ''.join(random.sample('0123456789', 4))
+    ADID = ''.join(random.sample('0987654321ABCDEF', 8)) + '-' + ''.join(random.sample('0987654321ABCDEF', 4)) + '-' + ''.join(random.sample('0987654321ABCDEF', 4)) + '-' + ''.join(random.sample('0987654321ABCDEF', 4)) + '-' + ''.join(random.sample('0987654321ABCDEF', 12))
+    lng='119.31991256596'+str(random.randint(100,999))
+    lat='26.1187118976'+str(random.randint(100,999))
+    UserAgent=''
+    if not UserAgent:
+        return f'jdapp;iPhone;10.0.4;{iosVer};{uuid};network/wifi;ADID/{ADID};model/iPhone{iPhone},1;addressid/{addressid};appBuild/167707;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS {iosV} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/null;supportJDSHWK/1'
+    else:
+        return UserAgent
 def gen_body(page):
     body = {
         "beginDate": datetime.datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(SHA_TZ).strftime("%Y-%m-%d %H:%M:%S"),
@@ -170,8 +187,8 @@ def get_beans_7days(ck):
         day_7 = True
         page = 0
         headers = {
-            "Host": "api.m.jd.com",
-            "User-Agent": "Mozilla/5.0 (Linux; Android 10; MI 9 Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.62 XWEB/2797 MMWEBSDK/201201 Mobile Safari/537.36 MMWEBID/7986 MicroMessenger/8.0.1840(0x2800003B) Process/appbrand4 WeChat/arm64 Weixin NetType/4G Language/zh_CN ABI/arm64 MiniProgramEnv/android",
+            "Host": "bean.m.jd.com",
+            "User-Agent": getua(),
             "Content-Type": "application/x-www-form-urlencoded;",
             "Cookie": ck,
         }
@@ -182,11 +199,13 @@ def get_beans_7days(ck):
         beans_out = {key: 0 for key in days}
         while day_7:
             page = page + 1
-            url="https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail&body=%7B%22pageSize%22%3A%2220%22%2C%22page%22%3A%22"+str(page)+"%22%7D&appid=ld"
-            resp = session.get(url, headers=headers, timeout=1000).text
+            url="https://bean.m.jd.com/beanDetail/detail.json?page="+str(page)
+            data='body='+quote(str({"pageSize":"20","page":str(page)}))+'&appid=ld'
+            resp = session.post(url, headers=headers, data=data ,timeout=1000).text
+
             res = json.loads(resp)
             if res['code'] == '0' :
-                for i in res['detailList']:
+                for i in res['jingDetailList']:
                     for date in days:
                         if str(date) in i['date'] and int(i['amount']) > 0:
                             beans_in[str(date)] = beans_in[str(date)] + int(i['amount'])
@@ -199,6 +218,7 @@ def get_beans_7days(ck):
             else:
                 print("未获取到数据，原因未知！！\n")
                 return {'code': 400, 'data': res}
+            #print(beans_in, beans_out, days)
         return {'code': 200, 'data': [beans_in, beans_out, days]}
     except Exception as e:
         print(str(e))
@@ -208,18 +228,17 @@ def get_beans_7days(ck):
 def get_total_beans(ck):
     try:
         headers = {
-            "Host": "wxapp.m.jd.com",
-            "Connection": "keep-alive",
-            "charset": "utf-8",
-            "User-Agent": "Mozilla/5.0 (Linux; Android 10; MI 9 Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.62 XWEB/2797 MMWEBSDK/201201 Mobile Safari/537.36 MMWEBID/7986 MicroMessenger/8.0.1840(0x2800003B) Process/appbrand4 WeChat/arm64 Weixin NetType/4G Language/zh_CN ABI/arm64 MiniProgramEnv/android",
+            "Host": "me-api.jd.com",
+            "User-Agent": getua(),
             "Content-Type": "application/x-www-form-urlencoded;",
-            "Accept-Encoding": "gzip, compress, deflate, br",
             "Cookie": ck,
+            #"Referer": 'https://wqs.jd.com/my/jingdou/my.shtml?sceneval=2'
         }
-        jurl = "https://wxapp.m.jd.com/kwxhome/myJd/home.json"
-        resp = session.get(jurl, headers=headers, timeout=100).text
+        jurl = "https://me-api.jd.com/user_new/info/GetJDUserInfoUnion"
+        resp = requests.get(jurl, headers=headers).text
         res = json.loads(resp)
-        return res['user']['jingBean']
+        #print(res)
+        return res['data']['assetInfo']['beanNum']
     except Exception as e:
         printf(str(e))
 
